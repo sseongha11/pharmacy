@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacy Recommendation System</title>
+    <!-- Add Bootstrap css -->
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <!-- Add custom css -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <style>
+        .grid-image, .h2-title{
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            margin: 0 0 5px;
+            width: 70%;
+            height: 550px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2 class="h2-title">Pharmacy Recommendation Results</h2>
+</div>
+
+<table class="table table-hover">
+    <tr>
+        <th>Pharmacy Name</th>
+        <th>Pharmacy Address</th>
+        <th>Distance</th>
+        <th>Direction Link</th>
+        <th>Road View Link</th>
+    </tr>
+    <tr th:each="outputForm : ${outputFormList}">
+        <td th:text="${outputForm.pharmacyName}"></td>
+        <td th:text="${outputForm.pharmacyAddress}"></td>
+        <td th:text="${outputForm.distance}"></td>
+        <td><a th:href="${outputForm.directionUrl}" th:text="${outputForm.directionUrl}"></a></td>
+        <td><a th:href="${outputForm.roadViewUrl}" th:text="${outputForm.roadViewUrl}"></a></td>
+    </tr>
+</table>
+<div class="grid-image">
+    <img src="/images/kakao.png" alt="kakao" class="img-responsive img-rounded">
+</div>
+<!-- Add Bootstrap js -->
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+
+</body>
+</html>

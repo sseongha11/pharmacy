@@ -22,7 +22,7 @@ class KakaoAddressSearchServiceTest extends AbstractIntegrationContainerBaseTest
 
     def "shouldReturnValidDocumentWhenAddressIsValid"() {
         given:
-        def address = "서울특별시 성북구 종암동 10길"
+        def address = "서울 성북구 종암동 10길 9"
 
         when:
         def result = kakaoAddressSearchService.requestAddressSearch(address)

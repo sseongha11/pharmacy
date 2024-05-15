@@ -4,7 +4,6 @@ import com.recommendation.project.direction.entity.Direction;
 import com.recommendation.project.direction.repository.DirectionRepository;
 import com.recommendation.project.kakao.dto.DocumentDto;
 import com.recommendation.project.kakao.service.KakaoCategorySearchService;
-import com.recommendation.project.pharmacy.dto.PharmacyDto;
 import com.recommendation.project.pharmacy.service.PharmacySearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
