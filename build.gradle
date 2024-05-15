@@ -36,6 +36,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // https://github.com/seruco/base62
+    implementation 'io.seruco.encoding:base62:0.1.3'
+
     // testcontainers
     testImplementation 'org.testcontainers:spock:1.19.8'
     testImplementation 'org.testcontainers:mariadb:1.19.8'
@@ -57,4 +60,13 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// $ ./gradlew clean build -PKAKAO_REST_API_KEY={api key value} Create a JAR file through the commands through the overall test and build process.
+processTestResources {
+    boolean hasProperty = project.hasProperty("KAKAO_REST_API_KEY")
+    System.out.println("Set kakao rest api key: $hasProperty")
+    filesMatching('**/application.yml') {
+        expand(project.properties)
+    }
 }

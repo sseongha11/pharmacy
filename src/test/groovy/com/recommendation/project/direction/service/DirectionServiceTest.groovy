@@ -1,6 +1,8 @@
 package com.recommendation.project.direction.service
 
+import com.recommendation.project.direction.repository.DirectionRepository
 import com.recommendation.project.kakao.dto.DocumentDto
+import com.recommendation.project.kakao.service.KakaoCategorySearchService
 import com.recommendation.project.pharmacy.dto.PharmacyDto
 import com.recommendation.project.pharmacy.service.PharmacySearchService
 import spock.lang.Specification
@@ -10,9 +12,12 @@ class DirectionServiceTest extends Specification {
 
     // Mocking the PharmacySearchService
     private PharmacySearchService pharmacySearchService = Mock()
+    private DirectionRepository directionRepository = Mock()
+    private KakaoCategorySearchService kakaoCategorySearchService = Mock()
+    private Base62Service base62Service = Mock()
 
     // Creating an instance of DirectionService
-    private DirectionService directionService = new DirectionService(pharmacySearchService)
+    private DirectionService directionService = new DirectionService(pharmacySearchService, directionRepository, kakaoCategorySearchService, base62Service)
 
     private List<PharmacyDto> pharmacyList
 
