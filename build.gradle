@@ -16,7 +16,14 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+
+    configurations {
+        configureEach {
+            exclude group: 'commons-logging', module: 'commons-logging'
+        }
+    }
 }
+
 
 bootJar {
     archiveFileName = 'app.jar'
@@ -30,12 +37,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    implementation 'com.opencsv:opencsv:5.9'
     // https://github.com/seruco/base62
     implementation 'io.seruco.encoding:base62:0.1.3'
 
